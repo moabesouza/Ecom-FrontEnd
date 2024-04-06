@@ -4,10 +4,9 @@
       
         <section class="col-3">
             <h6 class="text-danger my-3" style="font-weight: bold;">Ordenar Por:</h6>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Nome</option>
-                <option value="1">Preço Max-Min</option>
-                <option value="1">Preço Min-Max</option>
+            <select class="form-select" aria-label="Default select example" (change)="onSortSelect($event)">
+                <option *ngFor="let item of sortOption" [value] = "item.value">{{item.nome}}</option>
+            
             </select>
 
             <h6 class="text-danger my-3" style="font-weight: bold;">Categoria</h6>
