@@ -1,0 +1,17 @@
+<div class="card h-100 shadow-sm">
+      <img src="{{produto.prd_nm_imagem}}" alt="{{produto.prd_nm_nome}}">
+      <div class="card-body">
+        <a href="#">
+            <p class="text-uppercase">{{produto.prd_nm_nome}}</p>
+        </a>
+        <span>{{produto.prd_vl_valor | currency}}</span>
+        
+        <div class="">
+          <div class="btn-group mt-2">
+            <button type="button" class="btn btn-outline-danger fa fa-shopping-cart"></button>
+            <button type="button" class="btn btn-outline-primary">ver</button>
+          </div>
+        </div>
+      </div>
+</div>
+

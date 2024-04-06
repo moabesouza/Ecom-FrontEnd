@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="row">
+      
+        <section class="col-3">
+            <h6 class="text-danger my-3" style="font-weight: bold;">Ordenar Por:</h6>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Nome</option>
+                <option value="1">Preço Max-Min</option>
+                <option value="1">Preço Min-Max</option>
+            </select>
+
+            <h6 class="text-danger my-3" style="font-weight: bold;">Categoria</h6>
+            <ul class="list-group">
+                <li class="list-group-item" aria-current="true" 
+                *ngFor="let item of Categoria"
+                [class.active] ="item.id === CategoriaIdSelected"
+                [value] = "item.id"
+                (click) = "OnCategoriaSelect(item.id)"
+                >{{item.cat_nm_nome}}</li>
+       
+              </ul>
+        </section>
+
+
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center pb-2 pt-4">
+                <div class="col-3">
+                    <span>Exibindo <strong>1</strong> a <strong>10</strong> de <strong>1000</strong></span>
+                </div>
+                <div class="col-9">
+                    <div class="input-group">
+                        <input class="form-control mr-2"  type="text" placeholder="Pesquisar">
+                        <button class="btn btn-outline-success">Buscar</button>
+                        <button class="btn btn-outline-warning">Limpar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
+                <div class="col" *ngFor="let item of Produtos">
+                    <app-shop-item [produto] = "item"></app-shop-item>   
+                </div>                     
+              </div>
+        </section>
+    </div>
+</div>
