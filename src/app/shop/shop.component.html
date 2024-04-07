@@ -13,7 +13,7 @@
             <ul class="list-group">
                 <li class="list-group-item" aria-current="true" 
                 *ngFor="let item of Categoria"
-                [class.active] ="item.id === CategoriaIdSelected"
+                [class.active] ="item.id === shopParams.categoria_id"
                 [value] = "item.id"
                 (click) = "OnCategoriaSelect(item.id)"
                 >{{item.cat_nm_nome}}</li>
@@ -40,7 +40,20 @@
                 <div class="col" *ngFor="let item of Produtos">
                     <app-shop-item [produto] = "item"></app-shop-item>   
                 </div>                     
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <pagination 
+                (pageChanged)="onPageChaged($event.page)"
+                [itemsPerPage]="shopParams.pageSize"
+                [boundaryLinks]="true" 
+                [totalItems]="totalCount"
+                previousText="&lsaquo;" 
+                nextText="&rsaquo;" 
+                firstText="&laquo;" 
+                lastText="&raquo;"> 
+                </pagination>
               </div>
+         
         </section>
     </div>
 </div>

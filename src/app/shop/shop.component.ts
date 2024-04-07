@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduto } from '../shared/Models/Produto';
 import { ShopService } from './shop.service';
 import { ICategoria } from '../shared/Models/Categoria';
+import { ShopParams } from '../shared/Models/shopParams';
 
 @Component({
   selector: 'app-shop',
@@ -12,8 +13,9 @@ export class ShopComponent implements OnInit {
 
   Produtos: IProduto [];
   Categoria: ICategoria [];
-  CategoriaIdSelected: number = 0;
-  sortSelect : string = 'Nome';
+  shopParams = new ShopParams();
+  totalCount: number;
+
   sortOption =[
     {nome: 'Nome', value:'nome'},
     {nome: 'Preço Max-Min', value:'valorDesc'},
@@ -26,8 +28,11 @@ export class ShopComponent implements OnInit {
     this.getCategorias();
   }
   getProdutos(){
-     this.shopService.getProdutos(this.CategoriaIdSelected, this.sortSelect).subscribe( res =>{
+     this.shopService.getProdutos(this.shopParams).subscribe( res =>{
       this.Produtos = res.data;
+      this.totalCount = res.count;
+      this.shopParams.pageNumber = res.pageNumber;
+      this.shopParams.pageSize = res.pageSize;
     }) 
   }
   getCategorias(){
@@ -37,14 +42,19 @@ export class ShopComponent implements OnInit {
   }
  
   OnCategoriaSelect(categoria_id:number){
-    this.CategoriaIdSelected = categoria_id;
+    this.shopParams.categoria_id = categoria_id;
     this.getProdutos();
   }
 
   onSortSelect(sort: Event){
     let sortValue = (sort.target as HTMLInputElement).value;
-    this.sortSelect = sortValue;
+    this.shopParams.sort = sortValue;
     this.getProdutos();
   }
+
+  onPageChaged(event:any){
+    this.shopParams.pageNumber = event;
+    this.getProdutos();
+   }
 
 }
