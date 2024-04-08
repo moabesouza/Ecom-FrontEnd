@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IProduto } from '../shared/Models/Produto';
 import { ShopService } from './shop.service';
 import { ICategoria } from '../shared/Models/Categoria';
@@ -10,7 +10,7 @@ import { ShopParams } from '../shared/Models/shopParams';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-
+@ViewChild('search') searchTerm:ElementRef;
   Produtos: IProduto [];
   Categoria: ICategoria [];
   shopParams = new ShopParams();
@@ -43,6 +43,7 @@ export class ShopComponent implements OnInit {
  
   OnCategoriaSelect(categoria_id:number){
     this.shopParams.categoria_id = categoria_id;
+    this.shopParams.pageNumber = 1;
     this.getProdutos();
   }
 
@@ -53,8 +54,21 @@ export class ShopComponent implements OnInit {
   }
 
   onPageChaged(event:any){
-    this.shopParams.pageNumber = event;
+    if(this.shopParams.pageNumber !== event){
+      this.shopParams.pageNumber = event;
+      this.getProdutos();
+    }
+   
+   }
+
+   onSearch(){
+    this.shopParams.search = this.searchTerm.nativeElement.value;
     this.getProdutos();
    }
 
+   onClean(){
+    this.searchTerm.nativeElement.value = '';
+    this.shopParams = new ShopParams();
+    this.getProdutos();
+   }
 }

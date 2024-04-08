@@ -5,8 +5,7 @@
         <section class="col-3">
             <h6 class="text-danger my-3" style="font-weight: bold;">Ordenar Por:</h6>
             <select class="form-select" aria-label="Default select example" (change)="onSortSelect($event)">
-                <option *ngFor="let item of sortOption" [value] = "item.value">{{item.nome}}</option>
-            
+                <option *ngFor="let item of sortOption" [value] = "item.value">{{item.nome}}</option>     
             </select>
 
             <h6 class="text-danger my-3" style="font-weight: bold;">Categoria</h6>
@@ -26,14 +25,11 @@
             <div class="d-flex justify-content-between align-items-center pb-2 pt-4">
                           
             <app-paging-header [totalCount]="totalCount" [pageSize]="shopParams.pageSize" [pageNumber]="shopParams.pageNumber"></app-paging-header>
-                
-     
-
                 <div class="col-9">
                     <div class="input-group">
-                        <input class="form-control mr-2"  type="text" placeholder="Pesquisar">
-                        <button class="btn btn-outline-success">Buscar</button>
-                        <button class="btn btn-outline-warning">Limpar</button>
+                        <input (keyup.enter)="onSearch()" class="form-control mr-2"  type="text" #search placeholder="Pesquisar">
+                        <button class="btn btn-outline-success" (click) = "onSearch()">Buscar</button>
+                        <button class="btn btn-outline-warning" (click) = "onClean()">Limpar</button>
                     </div>
                 </div>
             </div>
