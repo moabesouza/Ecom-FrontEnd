@@ -24,9 +24,11 @@
 
         <section class="col-9">
             <div class="d-flex justify-content-between align-items-center pb-2 pt-4">
-                <div class="col-3">
-                    <span>Exibindo <strong>1</strong> a <strong>10</strong> de <strong>1000</strong></span>
-                </div>
+                          
+            <app-paging-header [totalCount]="totalCount" [pageSize]="shopParams.pageSize" [pageNumber]="shopParams.pageNumber"></app-paging-header>
+                
+     
+
                 <div class="col-9">
                     <div class="input-group">
                         <input class="form-control mr-2"  type="text" placeholder="Pesquisar">
@@ -41,19 +43,9 @@
                     <app-shop-item [produto] = "item"></app-shop-item>   
                 </div>                     
             </div>
-            <div class="d-flex justify-content-center mt-3">
-                <pagination 
-                (pageChanged)="onPageChaged($event.page)"
-                [itemsPerPage]="shopParams.pageSize"
-                [boundaryLinks]="true" 
-                [totalItems]="totalCount"
-                previousText="&lsaquo;" 
-                nextText="&rsaquo;" 
-                firstText="&laquo;" 
-                lastText="&raquo;"> 
-                </pagination>
-              </div>
-         
+            <div class="d-flex justify-content-center mt-3" *ngIf="totalCount>0">
+                <app-pager [totalCount]="this.totalCount" [pageSize]="shopParams.pageSize" (pageChaged)="onPageChaged($event)"></app-pager>
+            </div>
         </section>
     </div>
 </div>

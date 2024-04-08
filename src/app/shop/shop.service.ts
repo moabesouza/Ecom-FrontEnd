@@ -19,8 +19,8 @@ export class ShopService {
     }
 
     params = params.append('sort', shopParams.sort)
-    params = params.append('pageNumber', shopParams.pageNumber)
-    params = params.append('pageSize', shopParams.pageSize)
+    params = params.append('pageNumber', shopParams.pageNumber.toString())
+    params = params.append('pageSize', shopParams.pageSize.toString())
     return this.http.get<IPaginacao>(this.baseUrl + '/produto/todos', {observe:'response', params})
     .pipe(
     map(Response =>{
