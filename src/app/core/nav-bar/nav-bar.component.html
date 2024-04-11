@@ -1,17 +1,17 @@
 
     <header  class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-        <a routerLink="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <img src="/assets/images/logo.png" style="max-height: 120px;" alt="icon">
+        <a routerLink="/" class=" d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <img class="img-logo" src="/assets/images/logo.png"  alt="icon">
         </a>
       </div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 text-uppercase">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2">Loja</a></li>
-        <li><a href="#" class="nav-link px-2">Contato</a></li>
-        <li><a href="#" class="nav-link px-2">Ajuda</a></li>
-        <li><a href="#" class="nav-link px-2">Sobre</a></li>
+        <li><a  class="nav-link px-2" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+        <li><a  class="nav-link px-2" routerLink="/shop" routerLinkActive="active" >Loja</a></li>
+        <li><a  class="nav-link px-2" routerLink="/" >Contato</a></li>
+        <li><a  class="nav-link px-2" routerLink="/">Ajuda</a></li>
+        <li><a  class="nav-link px-2" routerLink="/">Sobre</a></li>
       </ul>
 
       <div class="d-flex align-items-center">

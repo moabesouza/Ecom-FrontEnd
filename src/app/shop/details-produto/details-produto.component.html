@@ -1,0 +1,24 @@
+
+<div class="row" *ngIf="produto">
+    <div class="col-6">
+        <img src="{{produto.prd_nm_imagem}}" alt="{{produto.prd_nm_nome}}" class="w-100">
+    </div>
+    <div class="col-6">
+        <h3>{{produto.prd_nm_nome}}</h3>
+        <p>{{produto.prd_vl_valor| currency}}</p>
+
+        <div class="d-flex justify-content-start align-items-center">
+            <!-- + | - | AddBtn  -->
+            <i  class="fa fa-minus-square text-danger mx-2" style="font-weight: bold; cursor: pointer; font-size: 1em;"></i>
+            <span style="font-weight: bold;">1</span>
+            <i class="fa fa-plus-square text-danger mx-2" style="font-weight: bold; cursor: pointer; font-size: 2em;"></i>
+            <button  class="btn btn-outline-danger btn-lg ml-5">Adicionar ao carrinho</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Descrição</h3>
+            <p>{{produto.prd_ds_descricao}}</p>
+        </div>
+    </div>
+</div>

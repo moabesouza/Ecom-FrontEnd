@@ -4,6 +4,7 @@ import { IPaginacao } from '../shared/Models/paginacao';
 import { ICategoria } from '../shared/Models/Categoria';
 import { map } from 'rxjs';
 import { ShopParams } from '../shared/Models/shopParams';
+import { IProduto } from '../shared/Models/Produto';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,9 @@ export class ShopService {
   }
 
 
+  getProduto(id:number){
+  return this.http.get<IProduto>(this.baseUrl + '/produto/' + id);
+  }
 
 
 }
