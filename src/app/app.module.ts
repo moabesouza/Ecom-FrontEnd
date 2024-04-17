@@ -15,7 +15,6 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
-
     HomeModule
     
   ],

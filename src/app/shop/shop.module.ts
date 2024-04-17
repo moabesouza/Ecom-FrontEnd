@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DetailsProdutoComponent } from './details-produto/details-produto.component';
 
 import { ShopRoutingModule } from './shop-routing.module';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -18,6 +19,7 @@ import { ShopRoutingModule } from './shop-routing.module';
   imports: [
     CommonModule,
     SharedModule,
+
     ShopRoutingModule
   ],
 
